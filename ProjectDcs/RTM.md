@@ -33,5 +33,34 @@
 
 ---
 
-*Document Version: 1.0.0*
-*Last Updated: 2026-05-11*
+## 3. Unit Tests (2026-05-12)
+
+| Test Class | Tests | Status |
+|------------|-------|--------|
+| SupplierTest | 12 | ✓ |
+| TripTest | 12 | ✓ |
+| ExpenseReportTest | 12 | ✓ |
+| ExpenseLineTest | 15 | ✓ |
+| SupplierServiceTest | 12 | ✓ |
+| TripServiceTest | 15 | ✓ |
+| ExpenseReportServiceTest | 15 | ✓ |
+
+---
+
+## 4. Implementation Status
+
+| Component | Status | Date |
+|-----------|--------|------|
+| Entity/Supplier.php | ✓ Implemented | 2026-05-11 |
+| Entity/Trip.php | ✓ Implemented | 2026-05-11 |
+| Entity/ExpenseReport.php | ✓ Implemented | 2026-05-11 |
+| Entity/ExpenseLine.php | ✓ Implemented | 2026-05-11 |
+| Service/SupplierService.php | ✓ Implemented | 2026-05-12 |
+| Service/TripService.php | ✓ Implemented | 2026-05-12 |
+| Service/ExpenseReportService.php | ✓ Implemented | 2026-05-12 |
+| tests/ | ✓ Implemented | 2026-05-12 |
+
+---
+
+*Document Version: 1.0.1*
+*Last Updated: 2026-05-12*
