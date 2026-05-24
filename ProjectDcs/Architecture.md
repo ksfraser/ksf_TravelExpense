@@ -324,5 +324,55 @@ ksf_TravelExpense/
 
 ---
 
+## 9. RBAC Integration (ksfraser/rbac)
+
+### 9.1 Module Registration
+
+ksf_TravelExpense registers with ksfraser/rbac:
+- record_types: 'supplier', 'trip', 'expense_report', 'expense_line'
+- projections: 'public' (basic info, status), 'full' (all fields including budget, rates, approval data)
+- allow_invite: false
+- children: expense_line (child of expense_report), expense_report (child of trip)
+
+### 9.2 Entity Projections
+
+| Entity | PUBLIC Fields | FULL Fields |
+|--------|---------------|-------------|
+| Supplier | name, type, contact, website, status | + rate_code, corporate_rate, preference_order |
+| Trip | name, destination, dates, status | + budget_approved, expenses_total, approver_id, approved_at |
+| ExpenseReport | name, total_amount, status, date_submitted | + all line items, receipts, approval_chain, GL coding |
+| ExpenseLine | description, amount, category, date | + receipt_path, billable_flag, project_id |
+
+### 9.3 Access Model
+
+- **Employee**: Create/edit own trips and expense reports (via {userId}_individual team). View own records at PROJECTION_FULL.
+- **Manager**: View team members' trips (via org_direct team), approve/reject expense reports
+- **Finance/AP**: FULL access to approved expense reports for payment processing
+- **Travel Admin**: FULL access to supplier management, corporate rates
+- **Project Manager**: PUBLIC view of trip expenses linked to their projects
+
+### 9.4 SQL Enforcement
+
+Standard RBAC JOIN pattern against 0_rbac_record_access for all entity queries.
+
+### 9.5 Approval Workflow
+
+Expense report approval is a two-gate process:
+1. RBAC team membership (manager must have can_edit on the expense_report record)
+2. Business rule (expense_report.status must be 'submitted')
+Approval action writes to audit log via AuditLoggerInterface.
+
+### 9.6 Soft Delete
+
+- Trips and expense reports use soft delete
+- Expense lines cascade delete with parent report
+- Suppliers may be soft-deleted (preferred) or hard-deleted (if no linked trips)
+
+### 9.7 Persons Registry
+
+Trip approver_id and employee_id link to the FA person registry (0_crm_persons/0_crm_contacts) for cross-module identity resolution.
+
+---
+
 *Document Version: 1.0.0*
-*Last Updated: 2026-05-11*
+*Last Updated: 2026-05-24*

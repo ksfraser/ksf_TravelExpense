@@ -153,6 +153,40 @@ ksf_TravelExpense provides travel and expense management including supplier mana
 - Export for accounting
 - Track GL totals
 
+### FR-TE-007: RBAC Integration
+**Requirement**: All entity queries MUST be filtered through RBAC.
+
+**Features**:
+- JOIN against 0_rbac_record_access for Supplier, Trip, ExpenseReport, ExpenseLine queries
+- JOIN against 0_rbac_team_members for current user resolution
+- Support PUBLIC and FULL projections per entity
+- Enforce team-based access at query level
+
+### FR-TE-008: DTO Projections
+**Requirement**: Entities shall define PUBLIC and FULL data projections.
+
+**Features**:
+- Supplier: PUBLIC (name, type, contact, website, status) / FULL (+ rate_code, corporate_rate, preference_order)
+- Trip: PUBLIC (name, destination, dates, status) / FULL (+ budget_approved, expenses_total, approver_id, approved_at)
+- ExpenseReport: PUBLIC (name, total_amount, status, date_submitted) / FULL (+ all line items, receipts, approval_chain, GL coding)
+- ExpenseLine: PUBLIC (description, amount, category, date) / FULL (+ receipt_path, billable_flag, project_id)
+
+### FR-TE-009: Approval Workflow RBAC
+**Requirement**: Expense report approval requires RBAC gate.
+
+**Features**:
+- Two-gate approval: RBAC team membership (can_edit on record) + business rule (status = 'submitted')
+- Approval action writes to audit log via AuditLoggerInterface
+- Manager must have team-based access to approve/reject
+
+### FR-TE-010: Soft Delete
+**Requirement**: Trips and expense reports shall support soft delete.
+
+**Features**:
+- Trips and expense reports use soft delete pattern
+- Expense lines cascade delete with parent report
+- Suppliers may be soft-deleted or hard-deleted (if no linked trips)
+
 ---
 
 ## 4. Default GL Codes
@@ -186,4 +220,4 @@ ksf_TravelExpense provides travel and expense management including supplier mana
 ---
 
 *Document Version: 1.0.0*
-*Last Updated: 2026-05-11*
+*Last Updated: 2026-05-24*
