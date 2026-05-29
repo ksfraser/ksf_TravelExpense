@@ -183,8 +183,8 @@ class Supplier
             'preference_order' => $this->preferenceOrder,
             'corporate_rate_available' => $this->corporateRateAvailable,
             'status' => $this->status,
-            'created_at' => $this->createdAt?->format('Y-m-d H:i:s'),
-            'updated_at' => $this->updatedAt?->format('Y-m-d H:i:s'),
+            'created_at' => $this->createdAt ? $this->createdAt->format('Y-m-d H:i:s') : null,
+            'updated_at' => $this->updatedAt ? $this->updatedAt->format('Y-m-d H:i:s') : null,
         ];
     }
 

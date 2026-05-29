@@ -268,10 +268,10 @@ class Trip
             'budget_approved' => $this->budgetApproved,
             'expenses_total' => $this->expensesTotal,
             'approver_id' => $this->approverId,
-            'approved_at' => $this->approvedAt?->format('Y-m-d H:i:s'),
+            'approved_at' => $this->approvedAt ? $this->approvedAt->format('Y-m-d H:i:s') : null,
             'rejection_reason' => $this->rejectionReason,
-            'created_at' => $this->createdAt?->format('Y-m-d H:i:s'),
-            'updated_at' => $this->updatedAt?->format('Y-m-d H:i:s'),
+            'created_at' => $this->createdAt ? $this->createdAt->format('Y-m-d H:i:s') : null,
+            'updated_at' => $this->updatedAt ? $this->updatedAt->format('Y-m-d H:i:s') : null,
         ];
     }
 

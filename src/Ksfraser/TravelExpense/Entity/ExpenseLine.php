@@ -231,7 +231,7 @@ class ExpenseLine
             'gl_code' => $this->glCode,
             'receipt_path' => $this->receiptPath,
             'status' => $this->status,
-            'created_at' => $this->createdAt?->format('Y-m-d H:i:s'),
+            'created_at' => $this->createdAt ? $this->createdAt->format('Y-m-d H:i:s') : null,
         ];
     }
 
