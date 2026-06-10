@@ -11,10 +11,30 @@ class ExpenseLine
     public const CATEGORY_MEAL_DINNER = 'meal_dinner';
     public const CATEGORY_HOTEL = 'hotel';
     public const CATEGORY_CAR_RENTAL = 'car_rental';
-    public const CATEGORY_TAXI = 'taxi';
+    public const CATEGORY_TAXI = 'taxi_rideshare';
     public const CATEGORY_TRANSIT = 'transit';
     public const CATEGORY_PER_DIEM = 'per_diem';
     public const CATEGORY_OTHER = 'other';
+    public const CATEGORY_AIRPLANE = 'airplane';
+    public const CATEGORY_SHIP = 'ship';
+    public const CATEGORY_AUTOBUS = 'bus';
+    public const CATEGORY_TRAIN = 'train';
+    public const CATEGORY_SHIPPING = 'shipping';
+    public const CATEGORY_PARKING = 'parking';
+    public const CATEGORY_PHONE = 'phone';
+    public const CATEGORY_TOLL = 'tolls';
+    public const CATEGORY_LAUNDRY = 'laundry';
+    public const CATEGORY_INSURANCE = 'insurance';
+    public const CATEGORY_BANK = 'bank';
+    public const CATEGORY_MEDICAL = 'medical';
+    public const CATEGORY_FEES = 'fees';
+    public const CATEGORY_TICKETS = 'tickets';
+    public const CATEGORY_GAS = 'gasoline';
+    public const CATEGORY_SUPPLIES = 'supplies';
+    public const CATEGORY_ENTERTAINMENT = 'entertainment';
+    public const CATEGORY_MISC = 'misc';
+    public const CATEGORY_TOWING = 'towing';
+
 
     private ?string $id = null;
     private string $expenseReportId = '';
@@ -39,6 +59,26 @@ class ExpenseLine
         self::CATEGORY_TRANSIT => 'TRANSIT',
         self::CATEGORY_PER_DIEM => 'PER_DIEM',
         self::CATEGORY_OTHER => 'OTHER',
+        self::CATEGORY_AIRPLANE => 'AIRPLANE',
+        self::CATEGORY_SHIP => 'SHIP',
+        self::CATEGORY_AUTOBUS => 'AUTOBUS',
+        self::CATEGORY_TRAIN => 'TRAIN',
+        self::CATEGORY_SHIPPING => 'SHIPPING',
+        self::CATEGORY_PARKING => 'PARKING',
+        self::CATEGORY_PHONE => 'PHONE',
+        self::CATEGORY_TOLL => 'TOLL',
+        self::CATEGORY_LAUNDRY => 'LAUNDRY',
+        self::CATEGORY_INSURANCE => 'INSURANCE',
+        self::CATEGORY_BANK => 'BANK',
+        self::CATEGORY_MEDICAL => 'MEDICAL',
+        self::CATEGORY_FEES => 'FEES',
+        self::CATEGORY_TICKETS => 'TICKETS',
+        self::CATEGORY_GAS => 'GAS',
+        self::CATEGORY_SUPPLIES => 'SUPPLIES',
+        self::CATEGORY_ENTERTAINMENT => 'ENTERTAINMENT',
+        self::CATEGORY_MISC => 'MISC',
+        self::CATEGORY_TOWING => 'TOWING',
+        
     ];
 
     public function __construct()

@@ -31,7 +31,7 @@ Travel and expense tracking - supplier management, trip scheduling, expense repo
 
 ### Trip as Mini-Project
 - Employee assigned
-- Schedule calendar events (meetings)
+- Schedule calendar events (meetings or events)
 - Pre-approval tasks
 - Expense tasks
 
